@@ -1,7 +1,7 @@
 const { getPath, IS_DEV } = require('./utils');
 
 module.exports = {
-  mode: 'production',
+  mode: IS_DEV ? 'development' : 'production',
   entry: getPath('src/index.ts'),
   output: {
     path: getPath('dist'),
