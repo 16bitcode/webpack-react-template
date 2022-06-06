@@ -1,1 +1,3 @@
-const a = 1;
+console.log(1);
+const a = 3;
+console.log(a);
