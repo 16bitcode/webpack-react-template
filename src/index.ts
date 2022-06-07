@@ -1,3 +1,8 @@
-console.log(1);
-const a = 3;
-console.log(a);
+import { getComponent } from "./main";
+
+console.log(getComponent());
+enum a {
+  aa,
+  bb,
+}
+console.log(a.aa, a.bb);
