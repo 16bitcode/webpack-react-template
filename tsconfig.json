@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "noImplicitAny": false,
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
+    "jsx": "react-jsx",
+    "target": "es6",
+    "lib": ["dom", "ESNext", "DOM.Iterable"],
     "allowJs": true,
+    "noImplicitAny": false,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "esnext",
     "moduleResolution": "node"
-  }
+  },
+  "include": ["src/**/*"]
 }
