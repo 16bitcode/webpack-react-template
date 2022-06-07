@@ -1,8 +1,9 @@
 const { getPath, IS_DEV } = require('./utils');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: IS_DEV ? 'development' : 'production',
-  entry: getPath('src/index.ts'),
+  entry: getPath('src/index.tsx'),
   output: {
     path: getPath('dist'),
     filename: IS_DEV
@@ -28,6 +29,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [new HtmlWebpackPlugin({
+    title: 'jira-pro2',
+    template: getPath('public/index.html'),
+    favicon: getPath('public/github.svg')
+  })],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   }
