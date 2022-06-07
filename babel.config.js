@@ -23,6 +23,7 @@ module.exports = function (api) {
   const plugins = ["@babel/plugin-transform-typescript"];
 
   return {
+    comments: true,
     presets,
     plugins,
   };
