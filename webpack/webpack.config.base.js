@@ -1,5 +1,7 @@
 const { getPath, IS_DEV } = require("./utils");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WindicssWebpackPlugin = require("windicss-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: IS_DEV ? "development" : "production",
@@ -36,6 +38,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
       },
@@ -51,8 +57,14 @@ module.exports = {
       template: getPath("public/index.html"),
       favicon: getPath("public/github.svg"),
     }),
+    new WindicssWebpackPlugin(),
+    new MiniCssExtractPlugin(),
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      "@": getPath("src"),
+    },
   },
+  stats: IS_DEV ? "errors-warnings" : "normal",
 };
