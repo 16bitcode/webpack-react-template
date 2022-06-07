@@ -58,7 +58,9 @@ module.exports = {
       favicon: getPath("public/github.svg"),
     }),
     new WindicssWebpackPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css",
+    }),
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
