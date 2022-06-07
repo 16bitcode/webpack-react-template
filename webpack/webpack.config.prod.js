@@ -3,8 +3,10 @@ const webpackBaseConfig = require("./webpack.config.base");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const { IS_ANA } = require("./utils");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
-module.exports = merge(webpackBaseConfig, {
+const config = merge(webpackBaseConfig, {
   optimization: {
     minimize: true,
     minimizer: [
@@ -15,4 +17,11 @@ module.exports = merge(webpackBaseConfig, {
       }),
     ],
   },
+  plugins: [],
 });
+
+if (IS_ANA) {
+  config.plugins.push(new BundleAnalyzerPlugin());
+}
+
+module.exports = config;
