@@ -16,6 +16,29 @@ const config = merge(webpackBaseConfig, {
         minify: TerserPlugin.esbuildMinify,
       }),
     ],
+    splitChunks: {
+      chunks: "all",
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          filename: "js/[name][contenthash:8].bundle.js",
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        default: {
+          minChunks: 2,
+          filename: "js/[name][contenthash:8].bundle.js",
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
   },
   plugins: [],
 });
